@@ -27,25 +27,18 @@ function getComputerChoice(computerChoice) {
 }
 
 function game(playerSelection, computerSelection) {
-    if (playerSelection === "Rock" && computerSelection === "Scissors") {
-        console.log("Player Wins!");
-    } else if (playerSelection === "Rock" && computerSelection === "Paper") {
+    switch (true) {
+        case playerSelection === computerSelection:
+        console.log("Draw!")
+        break;
+        case playerSelection === "Rock" && computerSelection === "Scissors":
+        case playerSelection === "Scissors" && computerSelection === "Paper":
+        case playerSelection === "Paper" && computerSelection === "Rock":
+        console.log("Player Wins!")
+        break;
+        default: 
         console.log("Computer Wins!")
-    } else if (playerSelection === "Rock" && computerSelection === "Rock") {
-        console.log("Draw")
-    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-        console.log("Player Wins!");
-    } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-        console.log("Computer Wins!")
-    } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
-        console.log("Draw")
-    } else if (playerSelection === "Paper" && computerSelection === "Rock") {
-        console.log("Player Wins!");
-    } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
-        console.log("Computer Wins!")
-    } else if (playerSelection === "Paper" && computerSelection === "Paper") {
-        console.log("Draw")  
-}
+    }
 }
 
 let playerSelection = getPlayerChoice(paper);
@@ -61,3 +54,25 @@ game(playerSelection, computerSelection)
 
 // console.log(computerChoice)
 
+
+// function game(playerSelection, computerSelection) {
+//     if (playerSelection === "Rock" && computerSelection === "Scissors") {
+//         console.log("Player Wins!");
+//     } else if (playerSelection === "Rock" && computerSelection === "Paper") {
+//         console.log("Computer Wins!")
+//     } else if (playerSelection === "Rock" && computerSelection === "Rock") {
+//         console.log("Draw")
+//     } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+//         console.log("Player Wins!");
+//     } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+//         console.log("Computer Wins!")
+//     } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
+//         console.log("Draw")
+//     } else if (playerSelection === "Paper" && computerSelection === "Rock") {
+//         console.log("Player Wins!");
+//     } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+//         console.log("Computer Wins!")
+//     } else if (playerSelection === "Paper" && computerSelection === "Paper") {
+//         console.log("Draw")  
+// }
+// }
