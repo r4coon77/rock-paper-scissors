@@ -4,9 +4,13 @@
 
 // let randomNumber = Math.floor((Math.random() * 3) + 1);
 
+// variables of each player choice, Rock, Paper or Scissors
+
 const rock = "Rock";
 const paper = "Paper";
 const scissors = "Scissors";
+
+// functions based on player & computer chocies
 
 function getPlayerChoice(playerChoice) {
     if (playerChoice === rock) {
@@ -26,7 +30,9 @@ function getComputerChoice(computerChoice) {
         return scissors;
 }
 
-function game(playerSelection, computerSelection) {
+// play round function which determines which choice wins
+
+function playRound(playerSelection, computerSelection) {
     switch (true) {
         case playerSelection === computerSelection:
         console.log("Draw!")
@@ -35,16 +41,51 @@ function game(playerSelection, computerSelection) {
         case playerSelection === "Scissors" && computerSelection === "Paper":
         case playerSelection === "Paper" && computerSelection === "Rock":
         console.log("Player Wins!")
+        playerScore++;
         break;
         default: 
         console.log("Computer Wins!")
+        computerScore++;
     }
+
 }
 
-let playerSelection = getPlayerChoice(paper);
-let computerSelection = getComputerChoice(Math.floor((Math.random() * 3) + 1));
+// intialising varibales to be used in game function includes player scores & round number
 
-game(playerSelection, computerSelection)
+let playerScore = 0;
+let computerScore = 0;
+let round = 0;
+
+function countRound() {
+        round++
+}
+
+// game function which plays 5 rounds of rock, paper, scissors and returns score
+
+function game() {
+    if (round <= 5) {
+    let playerSelection = getPlayerChoice(prompt());
+    let computerSelection = getComputerChoice(Math.floor((Math.random() * 3) + 1));
+    playRound(playerSelection, computerSelection)
+    countRound()
+    console.log("Player Score:", playerScore)
+    console.log("Computer Score:", computerScore)
+    } else
+        if (computerScore > playerScore) {
+            console.log("Computer Wins! with ", computerScore, "Points!")
+        } else if (playerScore > computerScore) {
+            console.log("Player Wins!! with ", playerScore, "Points!")
+        } else 
+        console.log("Its a Draw!")
+}
+
+// Calls game function 6 times (6th time gives winning game message)
+
+for(let i = 0; i <= 6; i++) {
+    game()
+}
+
+
 
 
 
