@@ -81,9 +81,9 @@ function game() {
 
 // Calls game function 6 times (6th time gives winning game message)
 
-for(let i = 0; i <= 6; i++) {
-    game()
-}
+// for(let i = 0; i <= 6; i++) {
+//     game()
+// }
 
 
 

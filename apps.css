@@ -1,0 +1,28 @@
+body {
+    margin: auto;
+}
+
+header {
+ text-align: center;
+ margin: 5%;
+}
+
+.button-selection {
+   display: flex;
+   gap: 5rem;
+   justify-content: center;
+   margin: 5%;
+}
+
+.RPS-button {
+    border-color: blue;
+    width: 150px;
+    height: 150px;
+}
+
+.playerScore,
+.computerScore {
+    border-color: blue;
+    width: 150px;
+    height: 150px;
+}
