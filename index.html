@@ -7,25 +7,31 @@
     <title>Rock, Paper, Scissors</title>
 </head>
 
-<script src="app.js"></script>
+
 <body>
     <header>
         <h1>Rock, Paper, Scissors!</h1>
     </header>
     <section>
         <div class="button-selection">
-            <button class="RPS-button">Rock</button>
-            <button class="RPS-button">Paper</button>
-            <button class="RPS-button">Scissors</button>
+            <button id="rock" class="RPS-button">Rock</button>
+            <button id="paper" class="RPS-button">Paper</button>
+            <button id="scissors" class="RPS-button">Scissors</button>
         </div>
         <div class="scores">
-            <div class="playerScore">Player Score</div>
-            <div class="computerScore">Computer Score</div>
+            <div class="playerScore">
+                <h2>Player Score</h2>
+                <span>0</span>
+            </div>
+            <div class="computerScore">
+                <h2>Computer Score</h2>
+                <span>0</span>
+            </div>
         </div>
     </section>
     <footer>
 
     </footer>
-    
+    <script src="app.js"></script>
 </body>
 </html>

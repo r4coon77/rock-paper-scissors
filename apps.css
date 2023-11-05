@@ -7,7 +7,8 @@ header {
  margin: 5%;
 }
 
-.button-selection {
+.button-selection,
+.scores {
    display: flex;
    gap: 5rem;
    justify-content: center;
@@ -20,9 +21,18 @@ header {
     height: 150px;
 }
 
-.playerScore,
-.computerScore {
+.scores > div {
     border-color: blue;
-    width: 150px;
+    background-color: blueviolet;
+    color: aliceblue;
+    text-align: center;
+    width: 200px;
     height: 150px;
+    display: block;
+}
+
+.playerScore > span,
+.computerScore > span {
+    color:aquamarine;
+    font-size: 3.5em;
 }

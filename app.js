@@ -10,12 +10,24 @@ const rock = "Rock";
 const paper = "Paper";
 const scissors = "Scissors";
 
+let rpsButtonClick = document.querySelectorAll('.RPS-button');
+let pScore = document.querySelector('.playerScore > span')
+let cScore = document.querySelector('.computerScore > span')
+
+
+for (i of rpsButtonClick) {
+    i.addEventListener('click', function(e) {
+      e.stopPropagation()
+      game(e.target.id)
+    });
+  }
+
 // functions based on player & computer chocies
 
 function getPlayerChoice(playerChoice) {
-    if (playerChoice === rock) {
+    if (playerChoice === "rock") {
         return rock;
-    } else if (playerChoice === paper) {
+    } else if (playerChoice === "paper") {
         return paper;
     } else
         return scissors;
@@ -62,13 +74,17 @@ function countRound() {
 
 // game function which plays 5 rounds of rock, paper, scissors and returns score
 
-function game() {
+function game(choice) {
     if (round <= 5) {
-    let playerSelection = getPlayerChoice(prompt());
+    let playerSelection = getPlayerChoice(choice);
     let computerSelection = getComputerChoice(Math.floor((Math.random() * 3) + 1));
     playRound(playerSelection, computerSelection)
     countRound()
+    console.log("Player Selection", playerSelection);
+    console.log("Computer Selection", computerSelection);
     console.log("Player Score:", playerScore)
+    pScore.textContent = playerScore;
+    cScore.textContent = computerScore;
     console.log("Computer Score:", computerScore)
     } else
         if (computerScore > playerScore) {
