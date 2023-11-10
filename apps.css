@@ -4,7 +4,7 @@ body {
 
 header {
  text-align: center;
- margin: 5%;
+ margin: 2%;
 }
 
 .button-selection,
@@ -12,7 +12,7 @@ header {
    display: flex;
    gap: 5rem;
    justify-content: center;
-   margin: 5%;
+   margin: 3%;
 }
 
 .RPS-button {
@@ -35,4 +35,16 @@ header {
 .computerScore > span {
     color:aquamarine;
     font-size: 3.5em;
+}
+
+.results {
+    text-align: center;
+    color:aquamarine;
+    background-color: blueviolet;
+    border-radius: 1%;
+    width: 600px;
+    margin: auto;
+    font-size: 1.5em;
+    margin-bottom: 2%;
+    padding: 2px;
 }

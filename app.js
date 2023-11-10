@@ -13,6 +13,8 @@ const scissors = "Scissors";
 let rpsButtonClick = document.querySelectorAll('.RPS-button');
 let pScore = document.querySelector('.playerScore > span')
 let cScore = document.querySelector('.computerScore > span')
+let results = document.querySelector('.results > p')
+let results2ndP = document.querySelectorAll('.results > p')[1]
 
 
 for (i of rpsButtonClick) {
@@ -45,18 +47,24 @@ function getComputerChoice(computerChoice) {
 // play round function which determines which choice wins
 
 function playRound(playerSelection, computerSelection) {
+    console.log("Player Selection", playerSelection);
+    console.log("Computer Selection", computerSelection);
     switch (true) {
         case playerSelection === computerSelection:
         console.log("Draw!")
+        results.textContent = `Player Selection: ${playerSelection} Computer Selection: ${computerSelection}`;
+        results2ndP.textContent = `Draw!`;
         break;
         case playerSelection === "Rock" && computerSelection === "Scissors":
         case playerSelection === "Scissors" && computerSelection === "Paper":
         case playerSelection === "Paper" && computerSelection === "Rock":
-        console.log("Player Wins!")
+        results.textContent = `Player Selection: ${playerSelection} Computer Selection: ${computerSelection}`;
+        results2ndP.textContent = `Player Wins!`;
         playerScore++;
         break;
         default: 
-        console.log("Computer Wins!")
+        results.textContent = `Player Selection: ${playerSelection} Computer Selection: ${computerSelection}`;
+        results2ndP.textContent = `Computer Wins!`;
         computerScore++;
     }
 
@@ -74,24 +82,32 @@ function countRound() {
 
 // game function which plays 5 rounds of rock, paper, scissors and returns score
 
+function appendScores () {
+    pScore.textContent = playerScore;
+    cScore.textContent = computerScore;
+}
+
+
 function game(choice) {
     if (round <= 5) {
     let playerSelection = getPlayerChoice(choice);
     let computerSelection = getComputerChoice(Math.floor((Math.random() * 3) + 1));
-    playRound(playerSelection, computerSelection)
-    countRound()
     console.log("Player Selection", playerSelection);
     console.log("Computer Selection", computerSelection);
-    console.log("Player Score:", playerScore)
-    pScore.textContent = playerScore;
-    cScore.textContent = computerScore;
-    console.log("Computer Score:", computerScore)
+    playRound(playerSelection, computerSelection)
+    appendScores(playerScore, computerScore)
+    countRound()
     } else
         if (computerScore > playerScore) {
+            results.textContent = `Computer Wins! with ${computerScore} Points!`;
             console.log("Computer Wins! with ", computerScore, "Points!")
+            results2ndP.textContent = "End Game";
         } else if (playerScore > computerScore) {
+            results.textContent = `Player Wins!! with ${playerScore} Points!"`;
             console.log("Player Wins!! with ", playerScore, "Points!")
+            results2ndP.textContent = "End Game";
         } else 
+        results.textContent = "Its a Draw!";
         console.log("Its a Draw!")
 }
 
