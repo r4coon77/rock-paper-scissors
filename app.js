@@ -93,7 +93,7 @@ function endRound () {
     } else if (playerScore > computerScore) {
         results.textContent = `Player Wins!! with ${playerScore} Points!"`;
         console.log("Player Wins!! with ", playerScore, "Points!")
-        results2ndP.textContent = `End Game`;
+        results2ndP.textContent = `End Game `;
         createResetBTN()
     } else 
     results.textContent = "Its a Draw!";
@@ -126,6 +126,10 @@ function createResetBTN() {
     const resetBtn = document.createElement('button');
     resetBtn.textContent = 'Reset';
     results2ndP.appendChild(resetBtn);
+    resetBtn.addEventListener('click', function(e) {
+        e.stopPropagation()
+        reset()
+      });
 }
 
 function reset() {
