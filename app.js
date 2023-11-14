@@ -52,19 +52,16 @@ function playRound(playerSelection, computerSelection) {
     switch (true) {
         case playerSelection === computerSelection:
         console.log("Draw!")
-        results.textContent = `Player Selection: ${playerSelection} Computer Selection: ${computerSelection}`;
-        results2ndP.textContent = `Draw!`;
+        results.textContent = `Draw! ${playerSelection} ties with ${computerSelection}`;
         break;
         case playerSelection === "Rock" && computerSelection === "Scissors":
         case playerSelection === "Scissors" && computerSelection === "Paper":
         case playerSelection === "Paper" && computerSelection === "Rock":
-        results.textContent = `Player Selection: ${playerSelection} Computer Selection: ${computerSelection}`;
-        results2ndP.textContent = `Player Wins!`;
+        results.textContent = `${playerSelection} beats ${computerSelection}`;
         playerScore++;
         break;
         default: 
-        results.textContent = `Player Selection: ${playerSelection} Computer Selection: ${computerSelection}`;
-        results2ndP.textContent = `Computer Wins!`;
+        results.textContent = `${computerSelection} beats ${playerSelection}`;
         computerScore++;
     }
 
@@ -87,28 +84,58 @@ function appendScores () {
     cScore.textContent = computerScore;
 }
 
+function endRound () {
+   if (computerScore > playerScore) {
+        results.textContent = `Computer Wins! with ${computerScore} Points!`;
+        console.log("Computer Wins! with ", computerScore, "Points!")
+        results2ndP.textContent = `End Game`;
+        createResetBTN()
+    } else if (playerScore > computerScore) {
+        results.textContent = `Player Wins!! with ${playerScore} Points!"`;
+        console.log("Player Wins!! with ", playerScore, "Points!")
+        results2ndP.textContent = `End Game`;
+        createResetBTN()
+    } else 
+    results.textContent = "Its a Draw!";
+    console.log("Its a Draw!")
+}
 
 function game(choice) {
-    if (round <= 5) {
+    if (round < 4) {
     let playerSelection = getPlayerChoice(choice);
     let computerSelection = getComputerChoice(Math.floor((Math.random() * 3) + 1));
     console.log("Player Selection", playerSelection);
     console.log("Computer Selection", computerSelection);
-    playRound(playerSelection, computerSelection)
-    appendScores(playerScore, computerScore)
-    countRound()
-    } else
-        if (computerScore > playerScore) {
-            results.textContent = `Computer Wins! with ${computerScore} Points!`;
-            console.log("Computer Wins! with ", computerScore, "Points!")
-            results2ndP.textContent = "End Game";
-        } else if (playerScore > computerScore) {
-            results.textContent = `Player Wins!! with ${playerScore} Points!"`;
-            console.log("Player Wins!! with ", playerScore, "Points!")
-            results2ndP.textContent = "End Game";
-        } else 
-        results.textContent = "Its a Draw!";
-        console.log("Its a Draw!")
+    playRound(playerSelection, computerSelection);
+    appendScores(playerScore, computerScore);
+    countRound();
+    results2ndP.textContent = `Round ${round}`;
+    } else if (round = 4) {
+            let playerSelection = getPlayerChoice(choice);
+            let computerSelection = getComputerChoice(Math.floor((Math.random() * 3) + 1));
+            console.log("Player Selection", playerSelection);
+            console.log("Computer Selection", computerSelection);
+            playRound(playerSelection, computerSelection);
+            appendScores(playerScore, computerScore);
+            countRound();
+            endRound();
+            } 
+}
+
+function createResetBTN() {
+    const resetBtn = document.createElement('button');
+    resetBtn.textContent = 'Reset';
+    results2ndP.appendChild(resetBtn);
+}
+
+function reset() {
+    isGameOver = false;
+    playerScore = 0;
+    computerScore = 0;
+    round = 0;
+    results.textContent = `Player Match Start!`;
+    results2ndP.textContent = `Make A Slection`;
+    appendScores();
 }
 
 // Calls game function 6 times (6th time gives winning game message)
@@ -118,34 +145,3 @@ function game(choice) {
 // }
 
 
-
-
-
-
-
-
-
-// console.log(computerChoice)
-
-
-// function game(playerSelection, computerSelection) {
-//     if (playerSelection === "Rock" && computerSelection === "Scissors") {
-//         console.log("Player Wins!");
-//     } else if (playerSelection === "Rock" && computerSelection === "Paper") {
-//         console.log("Computer Wins!")
-//     } else if (playerSelection === "Rock" && computerSelection === "Rock") {
-//         console.log("Draw")
-//     } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
-//         console.log("Player Wins!");
-//     } else if (playerSelection === "Scissors" && computerSelection === "Rock") {
-//         console.log("Computer Wins!")
-//     } else if (playerSelection === "Scissors" && computerSelection === "Scissors") {
-//         console.log("Draw")
-//     } else if (playerSelection === "Paper" && computerSelection === "Rock") {
-//         console.log("Player Wins!");
-//     } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
-//         console.log("Computer Wins!")
-//     } else if (playerSelection === "Paper" && computerSelection === "Paper") {
-//         console.log("Draw")  
-// }
-// }
