@@ -1,9 +1,5 @@
 // Rock Paper Scissors Game
 
-// console.log("hello world")
-
-// let randomNumber = Math.floor((Math.random() * 3) + 1);
-
 // variables of each player choice, Rock, Paper or Scissors
 
 const rock = "Rock";
@@ -15,6 +11,7 @@ let pScore = document.querySelector('.playerScore > span')
 let cScore = document.querySelector('.computerScore > span')
 let results = document.querySelector('.results > p')
 let results2ndP = document.querySelectorAll('.results > p')[1]
+let isGameOver = false;
 
 
 for (i of rpsButtonClick) {
@@ -77,8 +74,6 @@ function countRound() {
         round++
 }
 
-// game function which plays 5 rounds of rock, paper, scissors and returns score
-
 function appendScores () {
     pScore.textContent = playerScore;
     cScore.textContent = computerScore;
@@ -87,18 +82,29 @@ function appendScores () {
 function endRound () {
    if (computerScore > playerScore) {
         results.textContent = `Computer Wins! with ${computerScore} Points!`;
-        console.log("Computer Wins! with ", computerScore, "Points!")
-        results2ndP.textContent = `End Game`;
-        createResetBTN()
     } else if (playerScore > computerScore) {
         results.textContent = `Player Wins!! with ${playerScore} Points!"`;
-        console.log("Player Wins!! with ", playerScore, "Points!")
-        results2ndP.textContent = `End Game `;
-        createResetBTN()
-    } else 
-    results.textContent = "Its a Draw!";
-    console.log("Its a Draw!")
+    } else {results.textContent = "Its a Draw!";}
+
+    results2ndP.textContent = `End Game `;
+    isGameOver = true;
+    createResetBTN()
+    buttonDisable(rpsButtonClick)
 }
+
+function buttonDisable() {
+    if (isGameOver === true) {
+    for (i of rpsButtonClick) {
+        i.disabled = true;
+      } 
+     }
+     else
+        for (i of rpsButtonClick) {
+            i.disabled = false;
+          }
+}
+
+// game function which plays 5 rounds of rock, paper, scissors and returns score
 
 function game(choice) {
     if (round < 4) {
@@ -140,12 +146,8 @@ function reset() {
     results.textContent = `Player Match Start!`;
     results2ndP.textContent = `Make A Slection`;
     appendScores();
+    buttonDisable(rpsButtonClick)
 }
 
-// Calls game function 6 times (6th time gives winning game message)
-
-// for(let i = 0; i <= 6; i++) {
-//     game()
-// }
 
 
